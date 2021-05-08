@@ -1,0 +1,44 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+configurations {
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
+    sll*.exclude group: 'log4j', module: 'log4j'
+}
+
+// todo
+jar {
+    archiveBaseName = 'jsk-automation'
+    archiveVersion =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // SLF4J Logging API
+    ['slf4j-api'
+     ,'jcl-over-slf4j'     // replaces commons-logging to use slf4j
+     ,'log4j-over-slf4j'   // replaces log4j to use slf4
+     ,'jul-to-slf4j'       // replaces java.util.logging to use slf4j
+    ].each { a ->
+        compile "org.slf4j:$a:1.7.10"
+    }
+
+    compile "ch.qos.logback:logback-classic:1.1.2" // core logging implementation
+    compile "org.apache.commons:commons-lang3:3.3.2" // commons lang
+    compile "commons-io:commons-io:2.4"
+
+    // test only
+    testCompile("junit:junit:4.12")
+}
