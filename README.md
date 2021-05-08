@@ -1,4 +1,4 @@
 # Automated Web Testing :zap:
 
-##Introduction
+## Introduction
 This is a starter for automated web testing using Selenium JUnit and reporting to Allure.
