@@ -17,12 +17,12 @@ public class HelloSelenium {
         System.setProperty("webdriver.chrome.driver", chromeDriverPath);
 
         WebDriver driver = new ChromeDriver(options);
-         WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         try {
             driver.get("https://google.com/ncr");
             driver.findElement(By.name("q")).sendKeys("cheese" + Keys.ENTER);
-             WebElement firstResult = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h3")));
-             System.out.println(firstResult.getAttribute("textContent"));
+            WebElement firstResult = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h3")));
+            System.out.println(firstResult.getAttribute("textContent"));
         } finally {
             driver.quit();
         }

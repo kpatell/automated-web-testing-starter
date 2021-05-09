@@ -44,6 +44,7 @@ dependencies {
 
     // test only
     testCompile "junit:junit:4.12"
+    testImplementation "junit:junit:4.12"
 }
 
 task copyToLib(type: Copy) {
@@ -67,4 +68,9 @@ jar {
                 'Main-Class': 'org.jsk.automation.HelloSelenium'
         )
     }
+}
+
+test {
+    useJUnit()
+    maxHeapSize = '1G'
 }
